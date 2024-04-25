@@ -9,6 +9,7 @@ set(CMAKE_LINKER  x86_64-elf-ld)
 set(CMAKE_ASM_NASM_COMPILER nasm)
 
 if(CMAKE_ASM_NASM_COMPILER)
+    set(CMAKE_ASM_NASM_FLAGS "-f elf64")
     set(CMAKE_ASM_NASM_OBJECT_FORMAT "elf64")
 else()
     message(FATAL_ERROR "NASM compiler not found!")
@@ -29,5 +30,7 @@ set(TARGET_DEFINITIONS
     LEAF_X64
     LEAF_DEBUG
     LEAF_ARCH="x86_64"
+    LEAF_OFFSET="${LEAF_OFFSET}"
     LEAF_ARCH_RAW=x86_64
+    __LEAF_DEBUG_WRAPPERS__
 )
